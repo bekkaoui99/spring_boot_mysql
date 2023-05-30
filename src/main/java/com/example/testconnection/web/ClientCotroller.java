@@ -15,7 +15,7 @@ public class ClientCotroller {
     @Autowired
     private ClientRepo service;
 
-    @GetMapping(path = "/client")
+    @GetMapping(path = "/clients")
     public List<Client> clientList(){
         return service.findAll();
     }

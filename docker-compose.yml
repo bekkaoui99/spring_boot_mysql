@@ -11,20 +11,21 @@ services:
       - myNetwork
     depends_on:
       - db
+    environment:
       - MYSQL_HOST=db
-        - MYSQL_PORT=3306
-        - MYSQL_USER=user
-        - MYSQL_PASSWORD=user
+      - MYSQL_PORT=3306
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
 
   db:
     image: mysql:8.0.20
     ports:
       - '3306:3306'
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: store
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db-data:/var/lib/mysql
     networks:
